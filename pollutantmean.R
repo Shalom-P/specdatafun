@@ -24,6 +24,9 @@ pollutantmean<- function(directory,pollutant,id ){
   }
   mean(alln)
 }
+<<<<<<< HEAD
 
+=======
+>>>>>>> 9d2ed1271ba2edfefe716c7d7fbd93c3617fc55f
 
     
