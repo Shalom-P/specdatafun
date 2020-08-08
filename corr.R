@@ -1,7 +1,6 @@
 corr<-function(directory,threshold = 0){
-  b<- NULL
+  g<-NULL
   for(i in 1:332){
-    t<-numeric(400)
     if(i<10){
       a<-paste(paste('00',i,sep = ""),".csv",sep = "")
     }
@@ -11,7 +10,15 @@ corr<-function(directory,threshold = 0){
     else{
       a<-paste(i,".csv",sep = "")
     }
-    b<-c(b,complete.cases(read.csv(a)))
+    b<-read.csv(a)
+    len<-length(b$ID[complete.cases(b)])
+    if(len>threshold){
+      s<-b$nitrate[complete.cases(b)]
+      f<-b$sulfate[complete.cases(b)]
+      g<-c(corr(f,s))
+    }
   }
+  g
+}
   
   
