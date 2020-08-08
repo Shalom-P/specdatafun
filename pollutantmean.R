@@ -26,6 +26,7 @@ pollutantmean<- function(directory,pollutant,id ){
 }
 complete<-function(directory,id){
   t<-numeric(length(id))
+  t<-NULL
   for(i in  id){
     if(i<10){
       a<-paste(paste('00',i,sep = ""),".csv",sep = "")
@@ -37,9 +38,10 @@ complete<-function(directory,id){
       a<-paste(i,".csv",sep = "")
     }
     b<-read.csv(a)
-    t<-nrow(b)
+    t<-c(t,length(b$ID[complete.cases(b)]))
   }
   data.frame("id"=id,"nobs"=t)
+  
 }
 
     
