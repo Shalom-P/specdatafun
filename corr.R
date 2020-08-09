@@ -12,10 +12,11 @@ corr<-function(directory,threshold = 0){
     }
     b<-read.csv(a)
     len<-length(b$ID[complete.cases(b)])
+    j<-complete.cases(b)
+    s<-b$nitrate[j]
+    f<-b$sulfate[j]
     if(len>threshold){
-      s<-b$nitrate[complete.cases(b)]
-      f<-b$sulfate[complete.cases(b)]
-      g<-c(corr(f,s))
+      g<-c(g,cor(f,s))
     }
   }
   g
